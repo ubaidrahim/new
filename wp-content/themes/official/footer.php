@@ -28,7 +28,26 @@
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <?php wp_footer(); ?>
-
+<script>
+	adminurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+	//jQuery(document).ready(function($) {
+    $.ajax({
+        url: adminurl, // WordPress AJAX URL
+        type: 'POST',
+        data: {
+            action: 'get_projects',
+        },
+        success: function(response) {
+            // Handle the response data (array of projects)
+            console.log(response);
+        },
+        error: function(error) {
+            console.error('AJAX error:', error);
+        },
+    });
+//});
+</script>
 </body>
 </html>

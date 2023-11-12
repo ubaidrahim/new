@@ -1,4 +1,9 @@
 <?php
+function my_enqueue(){
+    wp_localize_script( 'ajax-script', 'my_ajax_object',
+            array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+}
+add_action( 'wp_enqueue_scripts', 'my_enqueue' );
 function register_ajax_endpoints(){
     add_action('wp_ajax_nopriv_get_projects', 'projects_callback');
     add_action('wp_ajax_get_projects', 'projects_callback');
@@ -19,16 +24,14 @@ function projects_callback(){
         'orderby'        => 'date',
         'order'          => 'DESC',
     );
-    $query = new WP_Query($args);
+    $query = new WP_Query($arg);
 
     $projects = array();
-
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
-
             $project_data = array(
-                'id' =>    the_ID(),
+                'id' =>    get_the_ID(),
                 'title' => get_the_title(),
                 'link'  => get_permalink(),
             );

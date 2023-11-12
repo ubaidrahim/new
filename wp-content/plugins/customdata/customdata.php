@@ -30,7 +30,9 @@
 
             require_once CDMT_PLUGIN_PATH . 'inc/wp-redirect.php';
             require_once CDMT_PLUGIN_PATH . 'inc/custom-posttype.php';
-            // require_once CDMT_PLUGIN_PATH . 'inc/test-shortcodes.php';
+            require_once CDMT_PLUGIN_PATH . 'inc/ajax-endpoint.php';
+            require_once CDMT_PLUGIN_PATH . 'inc/get-a-coffee.php';
+            require_once CDMT_PLUGIN_PATH . 'inc/get-quotes.php';
             
         }
 

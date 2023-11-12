@@ -45,7 +45,7 @@ function cdmt_create_taxonomy(){
 add_action('init', 'cdmt_create_taxonomy');
 
 function num_posts_archive_project($query){
-    if ($query->is_archive('projects')) {
+    if ($query->is_archive('projects') && $query->is_main_query()) {
             $query->set('posts_per_page', 6);
    }
     return $query;
